@@ -1,97 +1,57 @@
-
-/* body */
-  
-.body {
-  min-height: 100vh;
+body {
+    padding-top: 56px;
 }
 
-/* header */
-
-.header {
-  /* border: 1px solid black; */
-  height: 60px;
-  background-color: #0771af;
+.sticky-offset {
+    top: 56px;
 }
 
-.navbar {
-  /* border: 1px solid black; */
-  height: 100%;
+#body-row {
+    margin-left:0;
+    margin-right:0;
+}
+#sidebar-container {
+    min-height: 100vh;   
+    background-color: #333;
+    padding: 0;
 }
 
-.navbar-brand {
-  width: 100px; 
-  float: left;
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 230px;
+}
+.sidebar-collapsed {
+    width: 60px;
 }
 
-.navbar-left {
-  float: left;
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
 }
 
-.navbar-right {
-  float: right
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
 }
 
-/* main */
-
-.main {
-  /* border: 1px solid black; */
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+  content: "+";
+  font-family: Helvetica;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
 }
-
-.sidebar{
-  position: fixed;
-  width: 240px;
-  /* height: 100%; */
-  background: rgb(131, 136, 120);
-/*  border: 1px solid black;*/
-}
-
-/* content */
-
-.content {
-  position: relative;
-  float: left;
-  left: 240px;
-  width: calc(100% - 240px);
-  display: inline-block;
-/*  border: 1px solid black;*/
-}
-
-.inline-container {
-    display: inline-block;
-    width:100%;
-}
-
-/* here we go */
-
-.main-content-form {
-  position: relative;
-  display: inline-block;
-  width:100%;
-}
-
-.inaccordion-content-form {
-  position: relative;
-  display: inline-block;
-  width:100%;
-}
-
-.form-field {
-  position: relative;
-  float: left;
-  width:70%;
-/*  border: 1px solid black;*/
-}
-
-.form-button {
-  position: relative;
-  float: right;
-  width:20%;
-/*  border: 1px solid black;*/
-}
-
-.main-content-form-submit-button {
-  position: relative;
-  float: left;
-  width:100%;
-/*  border: 1px solid black;*/
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+  content: "-";
+  font-family: Helvetica;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
 }

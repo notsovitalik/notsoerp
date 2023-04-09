@@ -1,9 +1,16 @@
 {% extends "modules/layout_modules.html" %}
 {% block content %}
+
 {% import "modules/sku/dyn_component_addition.html" as macros %}
+
+<!-- JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script src="/static/js/dyn_add_sku_component.js"></script>
 <script src="/static/js/accordion.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/accordion.css') }}">
+
 <form class="main-content-form" method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <button class="accordion" type="button">main sku information</button>
@@ -98,4 +105,4 @@
         </div>
     </div>
 </form>
-{% endblock content%}
+{% endblock content %}

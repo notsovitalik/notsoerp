@@ -5,47 +5,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/accordion.css') }}">
 
     <!--title -->
     {% if title %}
-        <title>NOTSOERP - {{ title }}</title>
+        <title>NOTSOERP: {{ title }}</title>
     {% else %}
         <title>NOTSOERP</title>
     {% endif %}
+
 </head>
 <body>
   <header class="header">
-    <nav class="navbar">
-      <a class="navbar-brand" href="/home">NOTSOERP</a>
-      <div class="navbar-itself">
-        <div class="navbar-left">
-          {% if current_user.is_authenticated %}
-          <a class="navbar-link" href="{{ url_for('main.modules') }}">Modules</a>
-          <a class="navbar-link" href="#">Data</a>
-          <a class="navbar-link" href="#">Dashboards</a>
-          <a class="navbar-link" href="#">Settings</a>
-          {% else %}
-          <a class="navbar-link" href="{{ url_for('main.about') }}">About</a>
-          {% endif %}
-        </div>
-        <div class="navbar-right">
-          {% if current_user.is_authenticated %}
-            <a class="navbar-link" href="{{ url_for('users.logout') }}">Logout</a>
-          {% else %}
-            <a class="navbar-link" href="{{ url_for('users.login') }}">Login</a>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
   </header> 
-  <main class="main">
-    {% block main %}
+  <!-- Bootstrap NavBar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<!--       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <a class="navbar-brand" href="#">
+          <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+          <span class="menu-collapsed">NOTSOERP</span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          {% if current_user.is_authenticated %}
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('main.modules') }}">Modules</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Tables</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Dashboards</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Settings</a>
+              </li>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('main.about') }}">about</a>
+              </li>
+          </ul>
+          {% endif %}
+          <ul class="navbar-nav ml-auto">
+            {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('users.login') }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+      </div>
+  </nav>
+  <!-- NavBar END -->
+  <main>
+    {% block sidebar_content %}
     {% endblock %}
   </main>
   <footer>
   </footer>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

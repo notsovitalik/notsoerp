@@ -1,19 +1,62 @@
 {% extends "layout.html" %}
-{% block main %}
-  <div class="sidebar">
-    <ul class="menu">
-      <li>
-        <a class="link_name" href="#">sku</a>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="{{ url_for('modules.add_sku') }}">add</a></li>
-          <li><a class="link_name" href="https://wikiperdia.org">modify</a></li>
-          <li><a class="link_name" href="#">delete</a></li>
+
+{% block sidebar_content %}
+
+<script src="/static/js/submenus.js"></script>
+
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group sticky-top sticky-offset">
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" 
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw"></span>
+                    <span class="menu-collapsed">sku</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id="submenu1" class="collapse sidebar-submenu">
+                <a href="{{ url_for('modules.add_sku') }}" 
+                class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">add</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">change</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">delete</span>
+                </a>
+            </div>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" 
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-user fa-fw"></span>
+                    <span class="menu-collapsed">orders</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id="submenu2" class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">add</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">change</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">delete</span>
+                </a>
+            </div>
         </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="content">
-    {% block content %}
-    {% endblock %}
-  </div>
-{% endblock main%}
+        <!-- List Group END-->
+    </div>
+    <div class="col py-3">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</div>
+{% endblock sidebar_content %}
